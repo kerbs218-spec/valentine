@@ -49,8 +49,12 @@
 </head>
 <body>
 
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <div class="card">
-    <img id="displayImg" src="https://i.ibb.co/3ykMvPz/cat-hi.png" alt="Cat">
+    <img id="displayImg" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif" alt="Cat">
     <h1 id="text">Hi Baby!</h1>
     
     <div class="btn-container">
@@ -65,29 +69,31 @@
     const textElement = document.getElementById('text');
     const mainBtn = document.getElementById('mainBtn');
     const noBtn = document.getElementById('noBtn');
+    const music = document.getElementById('bgMusic');
 
-    // Sequence based on your uploaded images
     const steps = [
-        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif", btn: "SO WHAT!" },
+        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif", btn: "SO WHAT!" },
         { text: "Valentines is so so so so so malapit na right?!", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif", btn: "RIGHT?!" },
         { text: "Will you be my valentine?", img: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif", btn: "YES!" }
     ];
 
     function nextStep() {
+        // Start playing music on the first click
+        if (step === 0) {
+            music.play();
+        }
+
         if (step < steps.length) {
             textElement.innerHTML = steps[step].text;
             imgElement.src = steps[step].img;
             mainBtn.innerHTML = steps[step].btn;
             
-            // Show the NO button only on the final question
             if (step === 2) {
                 noBtn.style.display = 'block';
-                // Position NO button next to YES initially
                 noBtn.style.position = 'relative';
             }
             step++;
         } else {
-            // Success State
             textElement.innerHTML = "I knew you'd say yes! ❤️";
             imgElement.src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif";
             mainBtn.style.display = 'none';
