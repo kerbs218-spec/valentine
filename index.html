@@ -54,7 +54,7 @@
 </audio>
 
 <div class="card">
-    <img id="displayImg" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmhLTE84Qkk4Uk5yTVJGdEF4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/6hKL8BI8rRNrMRFtAx/giphy.gif" alt="Cat">
+    <img id="displayImg" src="https://giphy.com/gifs/6hKL8BI8rRNrMRFtAx" alt="Cat">
     <h1 id="text">Hi Idol</h1>
     
     <div class="btn-container">
@@ -72,55 +72,50 @@
     const music = document.getElementById('bgMusic');
 
     const steps = [
-        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3ZZTlNxQkFNRFZ4OENFeWt0JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/wvYNSqBAMDVx8CEYkt/giphy.gif", btn: "SO WHAT!" },
-        { text: "Valentines is so so so so so malapit na right?!", img: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExTEJiNzM1ZnVRUktBVnpOMjMmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/LBb735fuQwRKAVzN23/giphy.gif", btn: "Kaya nga eh" },
-        { text: "Gusto mo ba humabol idol?", img: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3RzLW1lbWVzLWZ1bm55LWNhdC1wWThqTG1adjBFbHF2VmVSSDQmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/pY8jLmZw0ElqvVeRH4/giphy.gif", btn: "Paano?" },
-        { text: "Will you be my valentine?", img: "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3RzLW1lbWVzLWZ1bm55LWNhdC1wWThqTG1adjBFbHF2VmVSSDQmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/pY8jLmZw0ElqvVeRH4/giphy.gif", btn: "YES!" }
+        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://giphy.com/gifs/vday-february-14-just-for-you-wvYNSqBAMDVx8CEYkt", btn: "SO WHAT!" },
+        { text: "Valentines is so so so so so malapit na right?!", img: "https://giphy.com/gifs/funny-meme-cursed-muhehehehe-LBb735fuQwRKAVzN23", btn: "Kaya nga eh" },
+        { text: "Gusto mo ba humabol idol?", img: "https://giphy.com/gifs/cats-memes-funny-cat-pY8jLmZw0ElqvVeRH4", btn: "Paano?" },
+        { text: "Will you be my valentine?", img: "https://giphy.com/gifs/cats-memes-funny-cat-pY8jLmZw0ElqvVeRH4", btn: "YES!" }
     ];
 
     function nextStep() {
-        if (step === 0) { music.play(); }
+        if (step === 0) {
+            music.play();
+        }
 
         if (step < steps.length) {
             textElement.innerHTML = steps[step].text;
             imgElement.src = steps[step].img;
             mainBtn.innerHTML = steps[step].btn;
             
-            // Only show the runaway NO button on the VERY last Valentine question
+            // Show NO button ONLY on the last step (Valentine Question)
             if (step === 3) {
                 noBtn.style.display = 'block';
-                resetNoBtn();
+                noBtn.style.position = 'relative';
+                noBtn.style.left = 'auto';
+                noBtn.style.top = 'auto';
             } else {
                 noBtn.style.display = 'none';
             }
             step++;
         } else {
-            // Final success state
-            textElement.innerHTML = "YEHEY! ❤️";
-            imgElement.src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExVGpTUFFFb3doaEpkSGd2bndBJmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/TjSPQgowhhJdHgvnwA/giphy.gif";
+            textElement.innerHTML = "YEHEY";
+            imgElement.src = "https://giphy.com/gifs/cat-dance-brown-ambush-rasel-gazi-TjSPQgowhhJdHgvnwA";
             mainBtn.style.display = 'none';
             noBtn.style.display = 'none';
         }
     }
 
-    // This handles the runaway movement
     function moveNo() {
-        // Change the text and image to "PLEASE" when they try to hit NO
+        // Change text and image to "PLEASE" when they try to click NO
         textElement.innerHTML = "PLEASE??? 🥺<br>Sige na idol!";
-        imgElement.src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif";
+        imgElement.src = "https://giphy.com/gifs/6hKL8BI8rRNrMRFtAx"; // Using your first link as the please cat
         
-        // Make it jump
         noBtn.style.position = 'fixed';
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
         noBtn.style.left = x + 'px';
         noBtn.style.top = y + 'px';
-    }
-
-    function resetNoBtn() {
-        noBtn.style.position = 'relative';
-        noBtn.style.left = 'auto';
-        noBtn.style.top = 'auto';
     }
 </script>
 
