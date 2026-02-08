@@ -1,0 +1,105 @@
+<?php
+// PHP can be used to handle "Yes" clicks or customize the page
+$isAccepted = isset($_GET['accepted']);
+$name = "Baby"; // You can change this to your crush's name
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For <?php echo $name; ?> ❤️</title>
+    <style>
+        body {
+            background-color: #e6e6ff; /* Match the purple vibe from your pics */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+            position: relative;
+        }
+
+        img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-around;
+            height: 50px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #b3b3ff;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* The No button will be absolute so it can teleport */
+        #noBtn {
+            position: absolute;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <?php if ($isAccepted): ?>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif">
+        <h1>I knew you'd say yes! ❤️</h1>
+    <?php else: ?>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif">
+        <h1>Will you be my valentine, <?php echo $name; ?>?</h1>
+        
+        <div class="btn-container">
+            <a href="?accepted=1" class="btn">YES!</a>
+            <button id="noBtn" class="btn" onmouseover="moveNo()">NO</button>
+        </div>
+    <?php endif; ?>
+</div>
+
+<script>
+    function moveNo() {
+        const btn = document.getElementById('noBtn');
+        // Subtract button size to keep it within view
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+        
+        btn.style.left = x + 'px';
+        btn.style.top = y + 'px';
+    }
+</script>
+
+</body>
+</html>
+<?php ?>
