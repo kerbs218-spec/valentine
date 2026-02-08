@@ -1,17 +1,11 @@
-<?php
-// PHP can be used to handle "Yes" clicks or customize the page
-$isAccepted = isset($_GET['accepted']);
-$name = "Baby"; // You can change this to your crush's name
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For <?php echo $name; ?> ❤️</title>
+    <title>For Baby ❤️</title>
     <style>
         body {
-            background-color: #e6e6ff; /* Match the purple vibe from your pics */
+            background-color: #e6e6ff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
@@ -20,7 +14,6 @@ $name = "Baby"; // You can change this to your crush's name
             margin: 0;
             overflow: hidden;
         }
-
         .card {
             background: white;
             padding: 40px;
@@ -30,7 +23,6 @@ $name = "Baby"; // You can change this to your crush's name
             width: 350px;
             position: relative;
         }
-
         img {
             width: 250px;
             height: 250px;
@@ -38,19 +30,8 @@ $name = "Baby"; // You can change this to your crush's name
             border-radius: 15px;
             margin-bottom: 20px;
         }
-
-        h1 {
-            color: #555;
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-        }
-
-        .btn-container {
-            display: flex;
-            justify-content: space-around;
-            height: 50px;
-        }
-
+        h1 { color: #555; font-size: 1.4rem; margin-bottom: 30px; }
+        .btn-container { display: flex; justify-content: space-around; height: 50px; }
         .btn {
             padding: 12px 25px;
             border: none;
@@ -63,43 +44,36 @@ $name = "Baby"; // You can change this to your crush's name
             text-decoration: none;
             font-size: 1rem;
         }
-
-        /* The No button will be absolute so it can teleport */
-        #noBtn {
-            position: absolute;
-            z-index: 999;
-        }
+        #noBtn { position: absolute; z-index: 999; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <?php if ($isAccepted): ?>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif">
-        <h1>I knew you'd say yes! ❤️</h1>
-    <?php else: ?>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif">
-        <h1>Will you be my valentine, <?php echo $name; ?>?</h1>
-        
-        <div class="btn-container">
-            <a href="?accepted=1" class="btn">YES!</a>
-            <button id="noBtn" class="btn" onmouseover="moveNo()">NO</button>
-        </div>
-    <?php endif; ?>
+<div class="card" id="valentineCard">
+    <img id="displayImg" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN61i/giphy.gif">
+    <h1 id="questionText">Will you be my valentine, Baby?</h1>
+    
+    <div class="btn-container" id="buttons">
+        <button class="btn" onclick="accept()">YES!</button>
+        <button id="noBtn" class="btn" onmouseover="moveNo()">NO</button>
+    </div>
 </div>
 
 <script>
     function moveNo() {
         const btn = document.getElementById('noBtn');
-        // Subtract button size to keep it within view
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
-        
         btn.style.left = x + 'px';
         btn.style.top = y + 'px';
+    }
+
+    function accept() {
+        document.getElementById('questionText').innerHTML = "I knew you'd say yes! ❤️";
+        document.getElementById('displayImg').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN4bm93bm93bm93bm93bm93bm93bm93bm93bm93bm93JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif";
+        document.getElementById('buttons').style.display = 'none';
     }
 </script>
 
 </body>
 </html>
-<?php ?>
