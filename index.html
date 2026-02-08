@@ -49,14 +49,6 @@
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="happyMusic">
-    <source src="https://www.myinstants.com/media/sounds/happy-happy-happy-song.mp3" type="audio/mpeg">
-</audio>
-
 <div class="card">
     <img id="displayImg" src="https://giphy.com/gifs/6hKL8BI8rRNrMRFtAx" alt="Cat">
     <h1 id="text">Hi Idol</h1>
@@ -73,21 +65,15 @@
     const textElement = document.getElementById('text');
     const mainBtn = document.getElementById('mainBtn');
     const noBtn = document.getElementById('noBtn');
-    const music = document.getElementById('bgMusic');
-    const happyMusic = document.getElementById('happyMusic');
 
     const steps = [
-        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://giphy.com/gifs/look-zoom-zoomed-BNlSrpW0e4nbgVZ2we", btn: "SO WHAT!" },
+        { text: "SOOOOOOOOOOOO... <br> .....", img: "https://giphy.com/gifs/cat-cute-animal-bN6kiR2fB7Dlm", btn: "SO WHAT!" },
         { text: "Valentines is so so so so so malapit na right?!", img: "https://giphy.com/gifs/funny-meme-cursed-muhehehehe-LBb735fuQwRKAVzN23", btn: "Kaya nga eh" },
         { text: "Gusto mo ba humabol idol?", img: "https://giphy.com/gifs/cats-memes-funny-cat-pY8jLmZw0ElqvVeRH4", btn: "Paano?" },
         { text: "Will you be my valentine?", img: "https://giphy.com/gifs/cats-memes-funny-cat-pY8jLmZw0ElqvVeRH4", btn: "YES!" }
     ];
 
     function nextStep() {
-        if (step === 0) {
-            music.play();
-        }
-
         if (step < steps.length) {
             textElement.innerHTML = steps[step].text;
             imgElement.src = steps[step].img;
@@ -102,10 +88,8 @@
             step++;
         } else {
             // YES CLICKED logic
-            music.pause();
-            happyMusic.play();
             textElement.innerHTML = "YEHEY! ❤️";
-            imgElement.src = "https://giphy.com/gifs/cat-dance-brown-ambush-rasel-gazi-TjSPQgowhhJdHgvnwA";
+            imgElement.src = "https://giphy.com/gifs/cat-meme-famous-T70hpBP1L0N7U0jtkq";
             mainBtn.style.display = 'none';
             noBtn.style.display = 'none';
         }
